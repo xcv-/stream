@@ -2,8 +2,9 @@
 #include <string>
 #include <initializer_list>
 
-#include <boost/lambda/lambda.hpp>
-using namespace boost::lambda;
+#include <boost/phoenix.hpp>
+using namespace boost::phoenix;
+using namespace boost::phoenix::placeholders;
 
 #include "Stream.h"
 using namespace stream;

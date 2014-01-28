@@ -1,20 +1,12 @@
 #include <iostream>
 #include <initializer_list>
 
-#include <boost/lambda/lambda.hpp>
-using namespace boost::lambda;
+#include <boost/phoenix.hpp>
+using namespace boost::phoenix;
+using namespace boost::phoenix::placeholders;
 
 #include "Stream.h"
-
 using namespace stream;
-
-
-
-template <typename... Ts>
-std::ostream& operator<< (std::ostream& o, const std::tuple<Ts...>& tup) {
-	o << std::get<0>(tup) << std::endl;
-}
-
 
 using std::cout;
 using std::get;

@@ -2,10 +2,9 @@
 #include <initializer_list>
 using std::string;
 
-#include <boost/lambda/lambda.hpp>
-#include <boost/lambda/casts.hpp>
-#include <boost/lambda/construct.hpp>
-using namespace boost::lambda;
+#include <boost/phoenix.hpp>
+using namespace boost::phoenix;
+using namespace boost::phoenix::placeholders;
 
 #include "Stream.h"
 using namespace stream;
@@ -21,12 +20,10 @@ int main() {
 		{'!'}
 	};
 
-	auto append = [](const string& s, char c) { return s + c; };
-
 	message >= from_stl()
 
 		>= map([&](const auto& chars) -> string {
-			return chars >= from_stl() >= foldl(string(), append); })
+			return chars >= from_stl() >= foldl(string(), _1 + _2); })
 
 		>= foldl(string(), _1 + _2)
 
