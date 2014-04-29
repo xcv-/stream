@@ -35,9 +35,9 @@ struct FoldL {
 		return acc;
 	}
 
-	private:
-		Input m_input;
-		FoldParams<A,F> m_params;
+private:
+	Input m_input;
+	FoldParams<A,F> m_params;
 };
 
 

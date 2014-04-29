@@ -12,47 +12,47 @@ template <typename C>
 struct STLInput;
 
 template <typename C>
-struct STLInputIterator {
-	private:
-		typename C::const_iterator m_it;
-		typename C::const_iterator m_end;
-		bool m_first = true;
+class STLInputIterator {
 
-	public:
-		using ValueType = typename C::value_type;
+	typename C::const_iterator m_it;
+	typename C::const_iterator m_end;
+	bool m_first = true;
 
-		STLInputIterator(const C& container)
-			: m_it(container.begin())
-			, m_end(container.end())
-		{}
+public:
+	using ValueType = typename C::value_type;
 
-		STLInputIterator(const STLInputIterator& other) = default;
-		STLInputIterator& operator = (const STLInputIterator& other) = default;
+	STLInputIterator(const C& container)
+		: m_it(container.begin())
+		, m_end(container.end())
+	{}
+
+	STLInputIterator(const STLInputIterator& other) = default;
+	STLInputIterator& operator = (const STLInputIterator& other) = default;
 
 
-		bool operator == (const STLInputIterator& other) const {
-			return m_it == other.m_it;
-		}
+	bool operator == (const STLInputIterator& other) const {
+		return m_it == other.m_it;
+	}
 
-		bool hasNext() const {
-			if (m_first)
-				return m_it != m_end;
+	bool hasNext() const {
+		if (m_first)
+			return m_it != m_end;
 
-			auto itCopy = m_it;
-			++itCopy;
-			return itCopy != m_end;
-		}
+		auto itCopy = m_it;
+		++itCopy;
+		return itCopy != m_end;
+	}
 
-		void next() {
-			if (m_first)
-				m_first = false;
-			else
-				++m_it;
-		}
+	void next() {
+		if (m_first)
+			m_first = false;
+		else
+			++m_it;
+	}
 
-		ValueType get() const {
-			return *m_it;
-		}
+	ValueType get() const {
+		return *m_it;
+	}
 };
 
 

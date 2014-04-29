@@ -19,20 +19,20 @@ struct ForEach {
 		: m_input(std::move(input)), m_params(std::move(params))
 	{}
 
-    ~ForEach() {
-        run();
-    }
+	~ForEach() {
+		run();
+	}
 
-    void run() {
+	void run() {
 		while (m_input.hasNext()) {
 			m_input.next();
 			m_params.function(m_input.get());
 		}
 	}
 
-	private:
-		Input m_input;
-		ForEachParams<F> m_params;
+private:
+	Input m_input;
+	ForEachParams<F> m_params;
 };
 
 

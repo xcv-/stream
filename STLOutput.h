@@ -54,10 +54,10 @@ struct STLInputIteratorAdaptor {
 	}
 
 
-	private:
-		Input m_input;
-		bool m_isEnd;
-		bool m_last = false;
+private:
+	Input m_input;
+	bool m_isEnd;
+	bool m_last = false;
 };
 
 
